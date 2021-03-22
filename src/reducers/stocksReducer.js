@@ -5,4 +5,4 @@ function stocksReducer(state = [], action) {
   }
 }
 
-
+export default stocksReducer;
