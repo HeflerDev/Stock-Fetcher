@@ -1,34 +1,76 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import getApiUrl from '../logic/getApiUrl';
+import { addResult, filterResult } from '../actions/index';
 
-const ConnectedStocksForm = props => {
-  const apiKey = 'd6565ee0950c8e6ff7fb16a02ee37ca6';
+const select = dispatch => ({
+  addResult: result => dispatch(addResult(result)),
+  filterResult: result => dispatch(filterResult(result)),
+});
+
+const ConnectedStocksForm = ({ addResult, filterResult }) => {
   const [state, setState] = useState({
     queue: '',
-    data: {},
+    error: null,
   });
 
   const handleChange = event => {
+    const value = event.target.value;
+    if (value.length > 1) {
+      const url = getApiUrl.search(value);
+      fetch(url)
+        .then(res => {
+          if (res.ok) { return res.json() }
+          throw new Error();
+        })
+        .then(data => {
+          filterResult(data);
+        });
+    }
+    
     setState({
-      queue: event.target.value,
+      queue: value,
+      error: null,
     });
   }
 
+  const handleSubmit = event => {
+    event.preventDefault();
+    const url = getApiUrl.profile(state.queue);
+    fetch(url)
+      .then(res => {
+        if (res.ok) { return res.json() }
+        throw new Error();
+      })
+      .then(data => {
+        addResult(data);
+        setState({
+          queue:'',
+        })
+      })
+      .catch(() => {
+        setState({
+          queue: state.queue,
+          error: 'No results found in Search',
+        });
+      });
+  }
+
+  const err = state.error;
   return (
     <>
       <form onSubmit={handleSubmit} className="stack">
-        <h2>Input Data</h2>
+        <h2>Manual Input</h2>
         <label htmlFor="acronym">
           <input type="text" placeholder="AAPL" id="acronym" onChange={handleChange} />
         </label>
-        <button type="submit">Submit</button>
+        <p>{ err }</p>
+        <button type="submit">Search</button>
       </form>
     </>
   );
-
 };
 
-const StocksForm = connect(null)(ConnectedStocksForm);
+const StocksForm = connect(null, select)(ConnectedStocksForm);
 
 export default StocksForm;
