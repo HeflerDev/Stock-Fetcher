@@ -31,16 +31,24 @@ const ConnectedStockList = ({ filter, addResult }) => {
       });
   }
 
+  const intercalate = index => {
+    console.log(index);
+    if (index % 2 === 0) {
+      return "stock-container";
+    }
+    return "stock-odd-container";
+  }
+
   return (
-  <> 
+  <div className="stack"> 
     {
-      filter.map((stock) => (
-        <div key={stock.symbol} onClick={() => handleClick(stock.symbol)}>
+      filter.map((stock, index) => (
+        <div key={stock.symbol} className={intercalate(index)} onClick={() => handleClick(stock.symbol)}>
           <Stock stock={stock} />
         </div>
       ))
     }
-  </>
+  </div>
   );
 };
 

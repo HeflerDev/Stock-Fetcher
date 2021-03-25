@@ -6,7 +6,6 @@ const Stock = ({ stock }) => {
     symbol,
     name,
     currency,
-    stockExchange,
     exchangeShortName,
   } = stock;
 
@@ -16,16 +15,13 @@ const Stock = ({ stock }) => {
         <li className="col-12 big">
           <div>{ name }</div>
         </li>
-        <li className="col-3">
+        <li className="col-4">
           <div>{ symbol }</div>
         </li>
-        <li className="col-3">
+        <li className="col-4">
           <div>{ currency }</div>
         </li>
-        <li className="col-3">
-          { stockExchange }
-        </li>
-        <li className="col-3">
+        <li className="col-4">
           { exchangeShortName }
         </li>
       </ul>
