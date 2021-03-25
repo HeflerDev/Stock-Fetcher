@@ -1,10 +1,21 @@
 
 :root {
-  --font-size-mobile-g: 1rem;
+  --font-size-mobile-m: 0.5rem;
+  --font-size-mobile-s: 0.3rem;
+}
+
+h1 {
+  font-size: 1rem;
 }
 
 h2 {
-  font-size: var(--font-size-mobile-g);
+  font-size: var(--font-size-mobile-m);
+}
+
+img {
+  margin: auto;
+  width: 50%;
+  border-radius: 50%;
 }
 
 label {
@@ -22,8 +33,7 @@ button {
 }
 
 p {
-  font-size: 0.3rem;
-  color: red;
+  font-size: 0.4rem;
 }
 
 ul {
@@ -51,10 +61,48 @@ svg {
   margin: auto 0;
 }
 
-* {
-  background-color: white;
+span {
+  font-size: var(--font-size-mobile-s);
+}
+
+nav {
+  background-color: rgb(32, 32, 32);
+  color: white;
+}
+
+nav .header-button {
+  color: gray;
+  border: solid black 1px;
+  font-size: 0.5rem;
 }
 
 .stack {
   padding: 0.2rem;
+}
+
+.txt {
+  font-size: 0.5rem;
+}
+
+.sm-txt {
+  font-size: 0.3rem;
+}
+
+.read-more-btn {
+  font-size: 0.3rem;
+  border: none;
+}
+
+.btn {
+  border: solid gray 1px;
+}
+
+.active {
+  border: solid green 1px;
+  color: green;
+}
+
+.inactive {
+  border: solid red 1px;
+  color: red;
 }

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 import getApiUrl from '../logic/getApiUrl';
 import { addResult, filterResult } from '../actions/index';
 
@@ -12,6 +13,7 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
   const [state, setState] = useState({
     queue: '',
     error: null,
+    redirect: false,
   });
 
   const handleChange = event => {
@@ -44,8 +46,11 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
       })
       .then(data => {
         addResult(data);
+      })
+      .then(() => {
         setState({
           queue:'',
+          redirect: true,
         })
       })
       .catch(() => {
@@ -57,6 +62,11 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
   }
 
   const err = state.error;
+  const redirect = state.redirect;
+
+  if (redirect) {
+    return <Redirect to="profile" />
+  }
   return (
     <>
       <form onSubmit={handleSubmit} className="stack">
