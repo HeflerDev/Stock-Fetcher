@@ -13,8 +13,7 @@ h2 {
 }
 
 img {
-  margin: auto;
-  width: 50%;
+  margin: 1rem auto;
   border-radius: 50%;
 }
 
@@ -76,6 +75,11 @@ nav .header-button {
   font-size: 0.5rem;
 }
 
+.information {
+  padding: 0.5rem;
+  font-size: 0.3rem;
+}
+
 .stack {
   padding: 0.2rem;
 }
@@ -105,4 +109,134 @@ nav .header-button {
 .inactive {
   border: solid red 1px;
   color: red;
+}
+
+.stock-container {
+  transition: 0.1s;
+  cursor: pointer;
+  margin: 0.2rem 0;
+  background-color: lightgray;
+  border-radius: 0.5rem;
+}
+ 
+.stock-odd-container {
+  transition: 0.1s;
+  cursor: pointer;
+  margin: 0.2rem 0;
+  border-radius: 0.5rem;
+}
+
+.stock-container:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+}
+
+.stock-odd-container:hover {
+  transition: 0.2s;
+  transform: scale(1.1);
+}
+
+@media screen and (min-device-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
+  input {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+  }
+
+  p {
+    font-size: 1rem;
+  }
+
+  ul .big {
+    font-size: 0.8rem;
+  }
+
+  li {
+    font-size: 0.6rem;
+  }
+
+  nav .header-button {
+    font-size: 1rem;
+    margin: auto;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  .txt {
+    font-size: 1.5rem;
+  }
+
+  .sm-txt {
+    font-size: 1rem;
+  }
+
+  .read-more-btn {
+    font-size: 1rem;
+  }
+
+  .information {
+    font-size: 0.8rem;
+    padding: 1rem 3rem;
+  }
+
+  span {
+    font-size: 1rem;
+  }
+}
+
+@media screen and (min-device-width: 1024px) {
+  h2 {
+    font-size: 3rem;
+  }
+
+  input {
+    font-size: 2rem;
+  }
+
+  button {
+    font-size: 2rem;
+  }
+
+  ul .big {
+    font-size: 2rem;
+  }
+
+  li {
+    font-size: 1.5rem;
+  }
+
+  nav .header-button {
+    font-size: 2rem;
+  }
+
+  .txt {
+    font-size: 2.5rem;
+  }
+
+  .sm-txt {
+    font-size: 2rem;
+  }
+
+  .read-more-btn {
+    font-size: 2rem;
+  }
+
+  .information {
+    font-size: 1.5rem;
+    padding: 3rem 6rem;
+  }
+
+  span {
+    font-size: 2rem;
+  }
 }

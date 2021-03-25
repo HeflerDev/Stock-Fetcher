@@ -68,16 +68,16 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
     return <Redirect to="profile" />
   }
   return (
-    <>
-      <form onSubmit={handleSubmit} className="stack">
-        <h2>Manual Input</h2>
-        <label htmlFor="acronym">
-          <input type="text" placeholder="AAPL" id="acronym" onChange={handleChange} />
+    <div className="stack">
+      <form onSubmit={handleSubmit} className="board">
+        <h2 className="col-12">Search for Symbol or Name</h2>
+        <label htmlFor="acronym" className="col-12 col-m-9">
+          <input type="text" className="queue" placeholder="AAPL" id="acronym" onChange={handleChange} />
         </label>
         <p>{ err }</p>
-        <button type="submit">Search</button>
+        <button type="submit" className="col-12 col-m-3">Search</button>
       </form>
-    </>
+    </div>
   );
 };
 

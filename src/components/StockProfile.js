@@ -52,22 +52,25 @@ const ConnectedStockProfile = ({ profile }) => {
     }
 
     const checkForReadingStatus = () => {
-      if (viewMoreDesc) {
+      if (description) {
+        if (viewMoreDesc) {
+          return (
+            <>
+              <p className="col-12 information">{ description }</p>
+              <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- Hide --</button>
+            </>
+          );
+        };
+
+        const cut = description.slice(0, 140);
         return (
           <>
-            <p className="col-12">{ description }</p>
-            <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- Hide --</button>
+            <div className="col-12 sm-txt fade-out">{ `${cut}...` }</div>
+            <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- View More --</button>
           </>
-        );
-      };
-
-      const cut = description.slice(0, 140);
-      return (
-        <>
-          <div className="col-12 sm-txt fade-out">{ `${cut}...` }</div>
-          <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- View More --</button>
-        </>
-      )
+        )
+      }
+      return <div className="col-12 read-more-btn">-- No Description Avaiable --</div>
     };
 
     const handleCompanyInfo = () => {
