@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Stock Correctly 1`] = `
+<div
+  className="stack"
+>
+  <ul
+    className="board"
+  >
+    <li
+      className="col-12 big"
+    >
+      <div>
+        Apple
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      <div>
+        AAPL
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      <div>
+        USD
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      NASDAQ
+    </li>
+  </ul>
+</div>
+`;
