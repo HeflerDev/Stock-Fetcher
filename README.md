@@ -1,6 +1,6 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# Stocks Fetcher
 
 > Stocks Fetcher is an web application that communicates with the [Free Stock Api](https://financialmodelingprep.com/api/) and displays it's data in intelligent ways.
 
