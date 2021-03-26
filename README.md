@@ -20,7 +20,7 @@ It's the React course Capstone project from [Microverse](https://www.microverse.
 
 ## Live Demo
 
-[Live Demo Link](https://605d4615cc83b8105651260d--stockfetcher.netlify.app/)
+[Live Demo Link](https://stocksmicroverse.netlify.app/)
 
 
 To get a local copy up and running follow these simple example steps.
