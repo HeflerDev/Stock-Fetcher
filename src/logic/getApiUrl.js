@@ -6,7 +6,7 @@ const getApiUrl = {
   },
   search(value) {
     return `https://financialmodelingprep.com/api/v3/search?query=${value}&limit=10&apikey=${apiKey}`;
-  }
-}
+  },
+};
 
 export default getApiUrl;

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import getApiUrl from '../logic/getApiUrl';
 import { addResult, filterResult } from '../actions/index';
 
-const select = dispatch => ({
-  addResult: result => dispatch(addResult(result)),
-  filterResult: result => dispatch(filterResult(result)),
+const select = (dispatch) => ({
+  addResult: (result) => dispatch(addResult(result)),
+  filterResult: (result) => dispatch(filterResult(result)),
 });
 
 const ConnectedStocksForm = ({ addResult, filterResult }) => {
@@ -16,42 +17,42 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
     redirect: false,
   });
 
-  const handleChange = event => {
-    const value = event.target.value;
+  const handleChange = (event) => {
+    const { value } = event.target;
     if (value.length > 1) {
       const url = getApiUrl.search(value);
       fetch(url)
-        .then(res => {
-          if (res.ok) { return res.json() }
+        .then((res) => {
+          if (res.ok) { return res.json(); }
           throw new Error();
         })
-        .then(data => {
+        .then((data) => {
           filterResult(data);
         });
     }
-    
+
     setState({
       queue: value,
       error: null,
     });
-  }
+  };
 
-  const handleSubmit = event => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const url = getApiUrl.profile(state.queue);
     fetch(url)
-      .then(res => {
-        if (res.ok) { return res.json() }
+      .then((res) => {
+        if (res.ok) { return res.json(); }
         throw new Error();
       })
-      .then(data => {
+      .then((data) => {
         addResult(data);
       })
       .then(() => {
         setState({
-          queue:'',
+          queue: '',
           redirect: true,
-        })
+        });
       })
       .catch(() => {
         setState({
@@ -59,13 +60,13 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
           error: 'No results found in Search',
         });
       });
-  }
+  };
 
   const err = state.error;
-  const redirect = state.redirect;
+  const { redirect } = state;
 
   if (redirect) {
-    return <Redirect to="profile" />
+    return <Redirect to="profile" />;
   }
   return (
     <div className="stack">
@@ -79,6 +80,11 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
       </form>
     </div>
   );
+};
+
+ConnectedStocksForm.propTypes = {
+  addResult: PropTypes.func.isRequired,
+  filterResult: PropTypes.func.isRequired,
 };
 
 const StocksForm = connect(null, select)(ConnectedStocksForm);

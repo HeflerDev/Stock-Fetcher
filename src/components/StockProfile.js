@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   profile: state.stocksReducer,
 });
 
@@ -35,21 +36,21 @@ const ConnectedStockProfile = ({ profile }) => {
       range,
       changes,
       exchangeShortName,
-    } = profile
+    } = profile;
 
     const checkForActivity = () => {
       if (isActivelyTrading) {
-        return <div className="col-12 txt active">Active</div>
+        return <div className="col-12 txt active">Active</div>;
       }
-      return <div className="col-12 txt inactive">Inactive</div>
-    }
+      return <div className="col-12 txt inactive">Inactive</div>;
+    };
 
     const viewMore = () => {
       if (viewMoreDesc) {
         return setViewMore(false);
       }
       return setViewMore(true);
-    }
+    };
 
     const checkForReadingStatus = () => {
       if (description) {
@@ -57,20 +58,20 @@ const ConnectedStockProfile = ({ profile }) => {
           return (
             <>
               <p className="col-12 information">{ description }</p>
-              <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- Hide --</button>
+              <button className="read-more-btn col-12" type="button" onClick={viewMore}>-- Hide --</button>
             </>
           );
-        };
+        }
 
         const cut = description.slice(0, 140);
         return (
           <>
             <div className="col-12 sm-txt fade-out">{ `${cut}...` }</div>
-            <button className="read-more-btn col-12" type="button" onClick={ viewMore }>-- View More --</button>
+            <button className="read-more-btn col-12" type="button" onClick={viewMore}>-- View More --</button>
           </>
-        )
+        );
       }
-      return <div className="col-12 read-more-btn">-- No Description Avaiable --</div>
+      return <div className="col-12 read-more-btn">-- No Description Avaiable --</div>;
     };
 
     const handleCompanyInfo = () => {
@@ -103,10 +104,10 @@ const ConnectedStockProfile = ({ profile }) => {
             </div>
             <button type="button" className="read-more-btn btn" onClick={() => setCompany(false)}>Hide</button>
           </>
-        )
+        );
       }
       return <button type="button" className="read-more-btn btn" onClick={() => setCompany(true)}>Company Info</button>;
-    }
+    };
 
     const handleStocksInfo = () => {
       if (stocks) {
@@ -150,14 +151,14 @@ const ConnectedStockProfile = ({ profile }) => {
             </div>
             <button type="button" className="read-more-btn btn" onClick={() => setStocks(false)}>Hide</button>
           </>
-        )
+        );
       }
-      return <button type="button" className="read-more-btn btn" onClick={() => setStocks(true)}>Stocks Info</button>
-    }
+      return <button type="button" className="read-more-btn btn" onClick={() => setStocks(true)}>Stocks Info</button>;
+    };
 
     return (
       <div className="stack">
-        <a href={ website } target="_blank" rel="noreferrer">
+        <a href={website} target="_blank" rel="noreferrer">
           <h1>{ companyName }</h1>
           <img src={image} alt="Logo" />
         </a>
@@ -171,9 +172,53 @@ const ConnectedStockProfile = ({ profile }) => {
         { handleCompanyInfo() }
         { handleStocksInfo() }
       </div>
-    )
+    );
   }
-  return <> Null </> ;
+  return <> Null </>;
+};
+
+ConnectedStockProfile.propTypes = {
+  profile: PropTypes.shape({
+    symbol: PropTypes.string.isRequired,
+    price: PropTypes.string.isRequired,
+    currency: PropTypes.string,
+    companyName: PropTypes.string.isRequired,
+    image: PropTypes.string.isRequired,
+    isActivelyTrading: PropTypes.bool.isRequired,
+    description: PropTypes.string,
+    website: PropTypes.string.isRequired,
+    country: PropTypes.string,
+    city: PropTypes.string,
+    ceo: PropTypes.string,
+    fullTimeEmployees: PropTypes.string,
+    industry: PropTypes.string,
+    phone: PropTypes.string,
+    sector: PropTypes.string,
+    state: PropTypes.string,
+    beta: PropTypes.string.isRequired,
+    volAvg: PropTypes.string.isRequired,
+    mktCap: PropTypes.string.isRequired,
+    lastDiv: PropTypes.string.isRequired,
+    range: PropTypes.string.isRequired,
+    changes: PropTypes.string,
+    exchangeShortName: PropTypes.string.isRequired,
+  }),
+};
+
+ConnectedStockProfile.defaultProps = {
+  profile: PropTypes.shape({
+    currency: 'No Data Declared',
+    description: 'No Description Avaiable',
+    country: 'n/a',
+    city: 'n/a',
+    ceo: 'n/a',
+    fullTimeEmployees: 'n/a',
+    industry: 'n/a',
+    phone: 'n/a',
+    sector: 'n/a',
+    state: 'n/a',
+    changes: 'n/a',
+  }),
 };
 
 const StockProfile = connect(mapStateToProps)(ConnectedStockProfile);

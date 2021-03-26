@@ -6,7 +6,7 @@ function stocksReducer(state = null, action) {
       if (Array.isArray(action.payload)) {
         const [result] = action.payload;
         return result;
-      };
+      }
       return action.payload;
     default:
       return state;

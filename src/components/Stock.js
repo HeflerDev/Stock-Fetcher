@@ -36,13 +36,13 @@ Stock.propTypes = {
     currency: PropTypes.string.isRequired,
     stockExchange: PropTypes.string,
     exchangeShortName: PropTypes.string,
-  }).isRequired,
+  }),
 };
 
 Stock.defaultProps = {
   stock: {
     name: 'None',
   },
-}
+};
 
 export default Stock;

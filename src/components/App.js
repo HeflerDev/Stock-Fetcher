@@ -4,7 +4,7 @@ import StockList from '../containers/StockList';
 
 const App = () => (
   <>
-    <StocksForm /> 
+    <StocksForm />
     <StockList />
   </>
 );
