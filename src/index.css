@@ -32,6 +32,7 @@ button {
 }
 
 p {
+  margin-bottom: 0.1rem;
   font-size: 0.4rem;
 }
 
@@ -70,6 +71,8 @@ nav {
 }
 
 nav .header-button {
+  text-decoration: none;
+  text-align: center;
   color: gray;
   border: solid black 1px;
   font-size: 0.5rem;
@@ -104,6 +107,13 @@ nav .header-button {
 .active {
   border: solid green 1px;
   color: green;
+}
+
+.introduction {
+  background-color: rgba(230, 200, 150, 0.5);
+  box-shadow: 1px 1px gray;
+  font-size: 1rem;
+  padding: 0.2rem 0.3rem; 
 }
 
 .inactive {
@@ -168,8 +178,6 @@ nav .header-button {
   nav .header-button {
     font-size: 1rem;
     margin: auto;
-    text-decoration: none;
-    text-align: center;
   }
 
   .txt {
@@ -191,6 +199,11 @@ nav .header-button {
 
   span {
     font-size: 1rem;
+  }
+
+  .introduction {
+    max-width: 75%;
+    margin: auto;
   }
 }
 
@@ -221,6 +234,15 @@ nav .header-button {
 
   .txt {
     font-size: 2.5rem;
+  }
+
+  .introduction {
+    max-width: 50%;
+  }
+
+  .introduction p {
+    font-size: 2rem;
+    padding: 0.5rem;
   }
 
   .sm-txt {
