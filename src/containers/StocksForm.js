@@ -19,7 +19,11 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
 
   const handleChange = (event) => {
     const { value } = event.target;
-    if (value.length > 1) {
+    if (value.length > 0) {
+      setState({
+        queue: value,
+        error: null,
+      });
       const url = getApiUrl.search(value);
       fetch(url)
         .then((res) => {
@@ -29,12 +33,13 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
         .then((data) => {
           filterResult(data);
         });
+    } else {
+      filterResult([]);
+      setState({
+        queue: '',
+        error: null,
+      });
     }
-
-    setState({
-      queue: value,
-      error: null,
-    });
   };
 
   const handleSubmit = (event) => {
@@ -75,9 +80,9 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
         <label htmlFor="acronym" className="col-12 col-m-9">
           <input type="text" className="queue" placeholder="AAPL" id="acronym" onChange={handleChange} />
         </label>
-        <p>{ err }</p>
         <button type="submit" className="col-12 col-m-3">Search</button>
       </form>
+      <p>{ err }</p>
     </div>
   );
 };

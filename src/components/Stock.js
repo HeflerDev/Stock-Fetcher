@@ -33,7 +33,7 @@ Stock.propTypes = {
   stock: PropTypes.shape({
     symbol: PropTypes.string.isRequired,
     name: PropTypes.string,
-    currency: PropTypes.string.isRequired,
+    currency: PropTypes.string,
     stockExchange: PropTypes.string,
     exchangeShortName: PropTypes.string,
   }),
@@ -42,6 +42,7 @@ Stock.propTypes = {
 Stock.defaultProps = {
   stock: {
     name: 'None',
+    currency: 'Not Declared',
   },
 };
 

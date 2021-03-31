@@ -59,8 +59,12 @@ const ConnectedStockList = ({ filter, addResult }) => {
 };
 
 ConnectedStockList.propTypes = {
-  filter: PropTypes.func.isRequired,
+  filter: PropTypes.arrayOf(PropTypes.object),
   addResult: PropTypes.func.isRequired,
+};
+
+ConnectedStockList.defaultProps = {
+  filter: [{}],
 };
 
 const StockList = connect(mapStateToProps, select)(ConnectedStockList);

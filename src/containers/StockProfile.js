@@ -180,7 +180,7 @@ const ConnectedStockProfile = ({ profile }) => {
 ConnectedStockProfile.propTypes = {
   profile: PropTypes.shape({
     symbol: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    price: PropTypes.number.isRequired,
     currency: PropTypes.string,
     companyName: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
@@ -195,12 +195,12 @@ ConnectedStockProfile.propTypes = {
     phone: PropTypes.string,
     sector: PropTypes.string,
     state: PropTypes.string,
-    beta: PropTypes.string.isRequired,
-    volAvg: PropTypes.string.isRequired,
-    mktCap: PropTypes.string.isRequired,
-    lastDiv: PropTypes.string.isRequired,
+    beta: PropTypes.number.isRequired,
+    volAvg: PropTypes.number.isRequired,
+    mktCap: PropTypes.number.isRequired,
+    lastDiv: PropTypes.number.isRequired,
     range: PropTypes.string.isRequired,
-    changes: PropTypes.string,
+    changes: PropTypes.number,
     exchangeShortName: PropTypes.string.isRequired,
   }),
 };
