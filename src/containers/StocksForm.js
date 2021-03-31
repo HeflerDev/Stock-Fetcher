@@ -1,6 +1,10 @@
+/* eslint-disable */
+
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Icon } from '@iconify/react';
+import magnifyingGlass from '@iconify-icons/foundation/magnifying-glass';
 import { Redirect } from 'react-router-dom';
 import getApiUrl from '../logic/getApiUrl';
 import { addResult, filterResult } from '../actions/index';
@@ -80,7 +84,7 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
         <label htmlFor="acronym" className="col-12 col-m-9">
           <input type="text" className="queue" placeholder="AAPL" id="acronym" onChange={handleChange} />
         </label>
-        <button type="submit" className="col-12 col-m-3">Search</button>
+        <button type="submit" className="col-12 col-m-3"><Icon icon={magnifyingGlass} /></button>
       </form>
       <p>{ err }</p>
     </div>
