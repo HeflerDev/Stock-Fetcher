@@ -1,17 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import getApiUrl from '../logic/getApiUrl';
 
 const mapStateToProps = (state) => ({
   profile: state.stocksReducer,
 });
 
-const ConnectedStockProfile = ({ profile }) => {
+const ConnectedStockProfile = ({ match: { params: { id } } }) => {
+  const [companyData, setCompanyData] = useState(null);
   const [viewMoreDesc, setViewMore] = useState(false);
   const [company, setCompany] = useState(false);
   const [stocks, setStocks] = useState(false);
 
-  if (profile) {
+  useEffect(() => {
+    async function fetchCompanyData(id) {
+      const response = await fetch(getApiUrl.profile(id));
+      const [data] = await response.json(response);
+
+      setCompanyData(data);
+      console.log(data);
+    }
+
+    fetchCompanyData(id);
+  }, []);
+
+  if (companyData) {
     const {
       symbol,
       price,
@@ -36,7 +50,7 @@ const ConnectedStockProfile = ({ profile }) => {
       range,
       changes,
       exchangeShortName,
-    } = profile;
+    } = companyData;
 
     const checkForActivity = () => {
       if (isActivelyTrading) {
@@ -178,6 +192,11 @@ const ConnectedStockProfile = ({ profile }) => {
 };
 
 ConnectedStockProfile.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
   profile: PropTypes.shape({
     symbol: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
@@ -206,6 +225,11 @@ ConnectedStockProfile.propTypes = {
 };
 
 ConnectedStockProfile.defaultProps = {
+  match: {
+    params: {
+      id: 'n/a',
+    },
+  },
   profile: PropTypes.shape({
     currency: 'No Data Declared',
     description: 'No Description Avaiable',

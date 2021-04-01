@@ -1,4 +1,4 @@
-const apiKey = 'd6565ee0950c8e6ff7fb16a02ee37ca6';
+const apiKey = 'af6d5d2d48987d8ac328c48e5bf40e8e';
 
 const getApiUrl = {
   profile(value) {
