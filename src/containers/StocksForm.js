@@ -1,11 +1,9 @@
-/* eslint-disable */
-
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Icon } from '@iconify/react';
-import magnifyingGlass from '@iconify-icons/foundation/magnifying-glass';
-import { Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import AwesomeDebouncePromise from 'awesome-debounce-promise';
+import magnifyingGlass from '../assets/icons/magnifying-glass.svg';
 import getApiUrl from '../logic/getApiUrl';
 import { addResult, filterResult } from '../actions/index';
 
@@ -14,26 +12,66 @@ const select = (dispatch) => ({
   filterResult: (result) => dispatch(filterResult(result)),
 });
 
-const ConnectedStocksForm = ({ addResult, filterResult }) => {
-  const [error, setError] = useState('');
-  const [redirect, setRedirect] = useState(false);
+const ConnectedStocksForm = ({ filterResult }) => {
+  const [error, setError] = useState([]);
   const [query, setQuery] = useState(null);
   const [queryData, setQueryData] = useState(null);
+  const [validation, setValidation] = useState(false);
 
   useEffect(() => {
     async function fetchStocksData(query) {
       await fetch(getApiUrl.search(query))
-        .then((res) => res.json())
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          }
+          throw new Error('Can\'t Connect to Server');
+        })
         .then((data) => {
-          setQueryData(data)
-          filterResult(queryData);
-        });
+          if (data.length > 0) {
+            setQueryData(data);
+            filterResult(queryData);
+            setValidation(true);
+          } else {
+            setQueryData(null);
+            filterResult([]);
+            setValidation(false);
+          }
+        })
+        .catch((err) => setError([...error, err.message]));
     }
-    if (query) {
-      fetchStocksData(query);
-    }
-  }, [query])
 
+    const asyncFunctionDebounced = AwesomeDebouncePromise(
+      fetchStocksData,
+      500,
+    );
+
+    if (query) {
+      asyncFunctionDebounced(query);
+    }
+  }, [query]);
+
+  const switchLink = () => (validation ? (
+    <Link to={query} className="queue center col-12 col-m-3 search-button">
+      <img src={magnifyingGlass} alt="Search" />
+    </Link>
+  ) : (
+    <div className="queue center col-12 col-m-3 disabled">
+      <img src={magnifyingGlass} alt="Search" />
+    </div>
+  ));
+
+  if (error.length > 0) {
+    return (
+      <div className="stack">
+        {
+          error.map((item) => (
+            <p className="error-msg" key="item">{ item }</p>
+          ))
+        }
+      </div>
+    );
+  }
   return (
     <div className="stack">
       <form className="board">
@@ -41,14 +79,14 @@ const ConnectedStocksForm = ({ addResult, filterResult }) => {
         <label htmlFor="acronym" className="col-12 col-m-9">
           <input type="text" className="queue" placeholder="AAPL" id="acronym" onChange={(event) => setQuery(event.target.value)} />
         </label>
-        <button type="submit" className="col-12 col-m-3"><Icon icon={magnifyingGlass} /></button>
+        { switchLink() }
       </form>
+      { error }
     </div>
   );
 };
 
 ConnectedStocksForm.propTypes = {
-  addResult: PropTypes.func.isRequired,
   filterResult: PropTypes.func.isRequired,
 };
 

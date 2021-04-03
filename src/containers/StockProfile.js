@@ -19,7 +19,6 @@ const ConnectedStockProfile = ({ match: { params: { id } } }) => {
       const [data] = await response.json(response);
 
       setCompanyData(data);
-      console.log(data);
     }
 
     fetchCompanyData(id);
@@ -188,7 +187,7 @@ const ConnectedStockProfile = ({ match: { params: { id } } }) => {
       </div>
     );
   }
-  return <> Null </>;
+  return null;
 };
 
 ConnectedStockProfile.propTypes = {

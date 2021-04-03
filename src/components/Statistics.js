@@ -47,7 +47,7 @@ Statistics.propTypes = {
   statistics: PropTypes.shape({
     ticker: PropTypes.string.isRequired,
     changes: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+    price: PropTypes.string.isRequired,
     changesPercentage: PropTypes.string.isRequired,
     companyName: PropTypes.string.isRequired,
   }).isRequired,

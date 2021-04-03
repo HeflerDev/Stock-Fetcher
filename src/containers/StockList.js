@@ -11,12 +11,13 @@ const mapStateToProps = (state) => ({
 const ConnectedStockList = ({ filter }) => (filter ? (
   <div className="stack">
     {
-        filter.map((stock) => (
+        filter.map((stock, index) => (
           <Link
             to={stock.symbol}
             tabIndex={0}
             role="button"
             key={stock.symbol}
+            className={(index % 2 === 0 ? 'stock-container' : 'stock-odd-container')}
           >
             <Stock stock={stock} />
           </Link>

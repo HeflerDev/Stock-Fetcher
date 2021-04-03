@@ -13,6 +13,8 @@ const Routes = () => (
     <Switch>
       <Route exact path="/" component={App} />
       <Route path="/:id" component={StockProfile} />
+    </Switch>
+    <Switch>
       <Route exact path="/about" component={About} />
     </Switch>
   </BrowserRouter>
