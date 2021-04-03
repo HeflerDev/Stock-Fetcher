@@ -36,8 +36,31 @@ header {
   padding: 0 5rem;
 }
 
+p {
+  margin-bottom: 0.1rem;
+  font-size: 0.4rem;
+}
+
 header p {
   font-size: 16px;
+}
+
+a:link {
+  text-decoration: none;
+  color: var(--color-muted-blue);
+}
+
+a:visited {
+  text-decoration: none;
+  color: var(--color-smooth-blue);
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+a:active {
+  text-decoration: none;
 }
 
 img {
@@ -53,15 +76,7 @@ label {
 input {
   font-size: 0.5rem;
   margin: auto;
-}
-
-button {
-  font-size: 0.5rem;
-}
-
-p {
-  margin-bottom: 0.1rem;
-  font-size: 0.4rem;
+  border: none;
 }
 
 ul {
@@ -106,15 +121,14 @@ nav .header-button {
   font-size: 0.5rem;
 }
 
-button {
-  border: none;
-  background-color: var(--color-muted-blue); 
-  color: whitesmoke;
-  border-radius: 0 1rem 1rem 0;
+.even {
+  background-color: var(--color-bright-blue);
 }
 
-input {
-  border: none; 
+.error-msg {
+  padding: 0.5rem;
+  background-color: rgba(255, 100, 100, 0.5);
+  color: red;
 }
 
 .green {
@@ -190,12 +204,12 @@ input {
 
 .stock-container:hover {
   transition: 0.2s;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .stock-odd-container:hover {
   transition: 0.2s;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 @media screen and (min-device-width: 768px) {
@@ -325,6 +339,27 @@ input {
     font-family: cursive;
   }
 
+  .search-button {
+    transition: 1s;
+    background-color: var(--color-bright-blue);
+    border-radius: 0 1rem 1rem 0;
+  }
+
+  .disabled {
+    transition: 2s;
+    background-color: var(--color-bright-blue);
+    border-radius: 0 1rem 1rem 0;
+    opacity: 25% !important;
+  }
+
+  .search-button img {
+    margin: auto;
+  }
+
+  .disabled img {
+    margin: auto;
+  }
+
   .queue {
     padding: 0 !important;
     margin: 0;
@@ -368,6 +403,11 @@ input {
   .information {
     font-size: 1.5rem;
     padding: 3rem 6rem;
+  }
+
+  .even {
+    background-color: rgba(100, 25, 200, 0.2);
+    transition: 0.2s;
   }
 
   span {
