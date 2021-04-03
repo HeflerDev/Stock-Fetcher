@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when loading the about page renders correctly 1`] = `
+<div
+  className="stack"
+>
+  <div
+    className="introduction"
+  >
+    <p>
+      This tiny-scale project was developed by
+       
+      <a
+        href="https://github.com/heflerdev"
+        rel="noreferrer"
+        target="_blank"
+      >
+        HeflerDev
+      </a>
+      .
+    </p>
+    <p>
+      Contact me through
+       
+      <a
+        href="https://linkedin.com/in/heflerdev"
+        rel="noreferrer"
+        target="_blank"
+      >
+        LinkedIn
+      </a>
+      .
+    </p>
+    <p>
+      Also, the e-mail heflerdev@gmail.com.
+    </p>
+  </div>
+</div>
+`;

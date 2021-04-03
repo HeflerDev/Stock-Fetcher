@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Stock Correctly 1`] = `
+exports[`when loading stock it render correctly 1`] = `
 <div
   className="stack"
 >
@@ -11,27 +11,27 @@ exports[`renders Stock Correctly 1`] = `
       className="col-12 big"
     >
       <div>
-        Apple
+        name
       </div>
     </li>
     <li
       className="col-4"
     >
       <div>
-        AAPL
+        symbol
       </div>
     </li>
     <li
       className="col-4"
     >
       <div>
-        USD
+        currency
       </div>
     </li>
     <li
       className="col-4"
     >
-      NASDAQ
+      ShortName
     </li>
   </ul>
 </div>
