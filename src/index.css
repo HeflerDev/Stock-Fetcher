@@ -4,7 +4,6 @@
   --color-dark-blue: #011c26;
   --color-muted-blue: #0c3640;
   --color-bright-blue: #037f8c;
-  --color-light-blue: #b6evf2;
   --color-smooth-blue: #027368;
 }
 
@@ -187,7 +186,7 @@ nav .header-button {
   background-color: rgba(230, 200, 150, 0.5);
   box-shadow: 1px 1px gray;
   font-size: 1rem;
-  padding: 0.2rem 0.3rem; 
+  padding: 0.2rem 0.3rem;
 }
 
 .inactive {
@@ -202,7 +201,7 @@ nav .header-button {
   background-color: lightgray;
   border-radius: 0.5rem;
 }
- 
+
 .stock-odd-container {
   transition: 0.1s;
   cursor: pointer;
