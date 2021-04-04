@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when loading statistics render statistic correctly 1`] = `
+<div
+  className="board statistics"
+>
+  <div
+    className="queue between stock-header"
+  >
+    <div>
+      0
+    </div>
+    <div>
+      Test
+    </div>
+  </div>
+  <div
+    className="queue center"
+  >
+    <p>
+      Price:
+      1.0
+    </p>
+  </div>
+  <div
+    className="queue around"
+  >
+    <p
+      className="green"
+    >
+      Changes:
+      0
+    </p>
+    <p
+      className="green"
+    >
+      Percentage %:
+      %
+    </p>
+  </div>
+</div>
+`;

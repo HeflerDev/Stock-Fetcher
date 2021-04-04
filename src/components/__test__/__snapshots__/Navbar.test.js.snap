@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when loading navbar it renders correctly 1`] = `
+<nav
+  className="board between"
+>
+  <a
+    className="col-6 header-button"
+    href="/about"
+    onClick={[Function]}
+  >
+    About the Dev
+  </a>
+  <a
+    className="col-6 header-button"
+    href="/"
+    onClick={[Function]}
+  >
+    Search
+  </a>
+</nav>
+`;

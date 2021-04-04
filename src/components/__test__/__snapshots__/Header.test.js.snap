@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when loading page renders correctly 1`] = `
+<header>
+  <div
+    className="header-img stack"
+  >
+    <div
+      className="header-text-container"
+    >
+      <p>
+        Progress
+      </p>
+      <h1>
+        Empowering
+        <br />
+        Our Clients
+      </h1>
+      <p
+        className="legend"
+      >
+        We have over 20 years of consultancy experience in this area of business
+         
+        and we strive to achieve the following: develop, empower, enable and maintain.
+      </p>
+    </div>
+  </div>
+</header>
+`;

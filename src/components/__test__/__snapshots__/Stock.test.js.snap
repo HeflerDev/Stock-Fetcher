@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`when loading stock it render correctly 1`] = `
+<div
+  className="stack"
+>
+  <ul
+    className="board"
+  >
+    <li
+      className="col-12 big"
+    >
+      <div>
+        name
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      <div>
+        symbol
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      <div>
+        currency
+      </div>
+    </li>
+    <li
+      className="col-4"
+    >
+      ShortName
+    </li>
+  </ul>
+</div>
+`;
