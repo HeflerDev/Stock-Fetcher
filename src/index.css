@@ -285,6 +285,10 @@ nav .header-button {
     font-size: 3rem;
   }
 
+  h3 {
+    font-size: 2rem;
+  }
+
   input {
     font-size: 1.5rem;
     background-color: whitesmoke;
