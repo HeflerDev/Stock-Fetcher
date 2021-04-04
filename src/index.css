@@ -32,7 +32,7 @@ header {
   background-image: url('./resources/png/stock-headers.png');
 }
 
-.statisticsi-container {
+.statistics-container {
   font-size: 0.3rem;
 }
 
@@ -415,6 +415,10 @@ nav .header-button {
   .even {
     background-color: rgba(100, 25, 200, 0.2);
     transition: 0.2s;
+  }
+
+  .stock-header {
+    font-size: 1rem;
   }
 
   span {
